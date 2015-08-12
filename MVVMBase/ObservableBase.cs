@@ -54,6 +54,7 @@ namespace MVVMBase
             {
                 if (currentCycle.Contains(input))
                 {
+                    // todo throw a better exception type (also todo find a list of exception types)
                     throw new Exception("cycle detected, printing chain to console");
                 }
                 if (PropertyRaiseChain.ContainsKey(input))
@@ -64,6 +65,7 @@ namespace MVVMBase
                     currentCycle.Remove(input);
                 }
             }
+            // todo see above
             catch (Exception)
             {
                 Console.WriteLine(input);
