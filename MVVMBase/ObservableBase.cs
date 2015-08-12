@@ -64,10 +64,10 @@ namespace MVVMBase
                     currentCycle.Remove(input);
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 Console.WriteLine(input);
-                throw e;
+                throw;
             }
         }
 
