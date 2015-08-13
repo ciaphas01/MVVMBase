@@ -24,8 +24,6 @@ namespace MVVMBase
 
             _execute = execute;
             _canExecute = canExecute;
-            if (CanExecuteChanged != null)
-                CanExecuteChanged(this, EventArgs.Empty);
         }
         #endregion
 
@@ -35,7 +33,11 @@ namespace MVVMBase
         {
             return _canExecute == null ? true : _canExecute(parameter);
         }
-        public event EventHandler CanExecuteChanged;
+        public event EventHandler CanExecuteChanged
+        {
+            add { CommandManager.RequerySuggested += value; }
+            remove { CommandManager.RequerySuggested -= value; }
+        }
         public void Execute(object parameter)
         {
             _execute(parameter);
